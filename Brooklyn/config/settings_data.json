@@ -195,7 +195,7 @@
           "1496177901425-0": {
             "type": "html",
             "settings": {
-              "code": "<div style=\"width:745px;text-align: center; margin: 0 auto;\">This text can be used to share information about your brand with customers.<\/div>",
+              "code": "<div style=\"text-align: center; margin: 0 auto;\">This text can be used to share information about your brand with customers.<\/div>",
               "width": "100%",
               "alignment": "top-middle"
             }
@@ -477,7 +477,7 @@
             "1496177901425-0": {
               "type": "html",
               "settings": {
-                "code": "<div style=\"width:745px;text-align: center; margin: 0 auto;\">This text can be used to share information about your brand with customers.<\/div>",
+                "code": "<div style=\"text-align: center; margin: 0 auto;\">This text can be used to share information about your brand with customers.<\/div>",
                 "width": "100%",
                 "alignment": "top-middle"
               }

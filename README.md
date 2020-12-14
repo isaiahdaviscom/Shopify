@@ -4,6 +4,9 @@ Theme development
 https://shopify.github.io/themekit/
 https://www.shopify.com/partners/blog/topics/learning-liquid
 
+# Agenda
+[Development Roadmap](https://github.com/isaiahdaviscom/Shopify/projects/2?add_cards_query=is%3Aopen)
+
 Getting Started
 
 
