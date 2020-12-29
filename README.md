@@ -1,13 +1,26 @@
+# Portfolio Work
+https://the-mac-cheese-bar.myshopify.com/
+https://loveislikeacandle.com/
+
 # Shopify
 Theme development
 
 https://shopify.github.io/themekit/
 https://www.shopify.com/partners/blog/topics/learning-liquid
+[Testing](https://help.shopify.com/en/manual/payments/shopify-payments/testing-shopify-payments)
 
 # Agenda
 [Development Roadmap](https://github.com/isaiahdaviscom/Shopify/projects/2?add_cards_query=is%3Aopen)
 
 Getting Started
+
+# Components
+[SlickJS](https://kenwheeler.github.io/slick/)
+[JQuery](https://jquery.com/)
+[EnquireJS](https://wicky.nillia.ms/enquire.js/)
+[Magnific Popup](https://dimsemenov.com/plugins/magnific-popup/)
+[ScrollToFixed](https://github.com/bigspotteddog/ScrollToFixed)
+
 
 
 # Template Hierarchy

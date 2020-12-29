@@ -852,6 +852,10 @@ img.mfp-img {
 
 /*================ Theme-specific partials ================*/
 /*================ Theme specific global styles ================*/
+:focus {
+  outline: none;
+}
+
 hr {
   border-width: $borderWidthHeader 0 0 0;
   width: 50px;
@@ -4352,7 +4356,8 @@ $disclosure-list-large: 1100px;
   width: 100%;
 
   @if $passwordPageUseBgImage {
-    background-image: url({{ "password-page-background.jpg" | asset_url }});
+    // background-image: url({{ "password-page-background.jpg" | asset_url }});
+    background-color: #433b4a;
     background-size: cover;
     background-repeat: no-repeat;
     color: #ffffff;
