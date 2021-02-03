@@ -198,7 +198,7 @@
                   </div>
                 {% endfor %}
               {% endunless %}
-
+              
               <select name="id" id="ProductSelect--{{ section.id }}" class="product-single__variants no-js">
                 {% for variant in product.variants %}
                   {% if variant.available %}
@@ -243,6 +243,10 @@
 
           <div class="product-single__description rte" itemprop="description">
             {{ product.description }}
+            <p id="testing" style="display: none;">
+              {{collection}}
+              {{section.settings.variant_collection_display}}
+            </p>
           </div>
 
           {% if section.settings.social_sharing_products %}
@@ -822,6 +826,11 @@
         "zh-TW": "啟用影片循環功能"
       },
       "default": false
+    },
+    {
+      "type": "collection",
+      "id": "variant_collection_display",
+      "label": "Variant Collection Display"
     }
   ]
 }

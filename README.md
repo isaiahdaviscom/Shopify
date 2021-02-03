@@ -2,6 +2,9 @@
 https://the-mac-cheese-bar.myshopify.com/
 https://loveislikeacandle.com/
 
+# `Plugins`
+https://apps.shopify.com/sheets
+
 # Shopify
 Theme development
 

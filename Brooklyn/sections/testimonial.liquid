@@ -13,27 +13,75 @@
     - assign grid_item_width = 'large--one-quarter medium--one-half'
 
 {% endcomment %}
-<div id="TestimonialWrappe-{{section.id}}" data-section-id="{{ section.id }}">
-  <div class="slick-slider">
-    <div class="slick-list">
-      <div class="slick-track">
-        <div class="hero__text-wrap" style="position: relative;">
-          <div class="hero__text-align wrapper">
-            <div class="hero__text-content" data-hero-text-content="" style="opacity: 1;">
-              <h2>Testimonial</h2>
-              {{section.settings}}
-              <p class="hero__subtitle" data-live-text-setting="section.slideshow.block.1495823280244.slide_subheading/escape">
-                  Welcome To
-                </p><h2 class="hero__title h1" data-live-text-setting="section.slideshow.block.1495823280244.slide_heading/escape">
-                  Pure Happiness
-                </h2></div>
-            </div>
-          </div>
-
+{%- style -%}}
+  #TestimonialWrapper-{{section.id}} .slick-prev, 
+  #TestimonialWrapper-{{section.id}} .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent
+  }
+  #TestimonialWrapper-{{section.id}} .slick-slider {
+    padding: 50px 0;
+  }
+  .slick-next{
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    right: 0;
+  }
+  .slick-prev{  
+      position: absolute;
+      z-index: 1000;
+      top: 50%;
+      left: 0;
+  }
+  {%- endstyle -%}
+<div id="TestimonialWrapper-{{section.id}}" data-section-id="{{ section.id }}">
+  <div class="wrapper">
+    <div class="section-header text-center">
+      <h2 class="h1 section-header__title">Testimonials</h2>
+      <hr class="hr--small">
+    </div>
+    <div class="testimonial text-center">
+    {%- for block in section.blocks -%}
+      <div>
+        {%- unless block.settings.slide_heading == blank -%}
+        <h2 class="hero__title h1">
+          {{ block.settings.slide_heading | escape }}
+        </h2>
+        {%- endunless -%}
+        {%- unless block.settings.slide_subheading == blank -%}
+        <p class="hero__subtitle">
+          {{ block.settings.slide_subheading | escape }}
+        </p>
+        {%- endunless -%}
       </div>
+    {%- endfor -%}
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.testimonial').slick({
+      arrows: true, dots: true,
+      nextArrow: '<button class="slick-next slick-arrow" aria-label="Next slide" data-slide-next="" style="display: block;"><span class="icon icon-slide-next" aria-hidden="true"></span></button>',
+      prevArrow: '<button class="slick-prev slick-arrow" aria-label="Next slide" data-slide-prev="" style="display: block;"><span class="icon icon-slide-prev" aria-hidden="true"></span></button>'
+    });
+  });
+</script>
 
 {% schema %}
 {
@@ -120,6 +168,267 @@
         "en": "Slide"
       },
       "settings": [
+      {
+        "type": "text",
+        "id": "slide_heading",
+        "label": {
+          "cs": "Nadpis",
+          "da": "Overskrift",
+          "de": "Überschrift",
+          "en": "Heading",
+          "es": "Título",
+          "fi": "Otsake",
+          "fr": "En-tête",
+          "it": "Heading",
+          "ja": "見出し",
+          "ko": "제목",
+          "nb": "Overskrift",
+          "nl": "Kop",
+          "pl": "Nagłówek",
+          "pt-BR": "Título",
+          "pt-PT": "Título",
+          "sv": "Rubrik",
+          "th": "ส่วนหัว",
+          "tr": "Başlık",
+          "vi": "Tiêu đề",
+          "zh-CN": "标题",
+          "zh-TW": "標題"
+        },
+        "default": {
+          "cs": "Hlavní banner",
+          "da": "Forgrundsbanner",
+          "de": "Hero-Banner",
+          "en": "Hero Banner",
+          "es": "Banner destacado",
+          "fi": "Hero Banner",
+          "fr": "Bannière de premier plan",
+          "it": "Banner hero",
+          "ja": "ヒーローバナー",
+          "ko": "히어로 배너",
+          "nb": "Hero-banner",
+          "nl": "Hero banner",
+          "pl": "Baner główny",
+          "pt-BR": "Banner principal",
+          "pt-PT": "Faixa do Hero",
+          "sv": "Hero Banner",
+          "th": "แบนเนอร์หลัก",
+          "tr": "Ana Banner",
+          "vi": "mở đầu",
+          "zh-CN": "主横幅",
+          "zh-TW": "主頁橫幅"
+        }
+      },
+      {
+        "type": "text",
+        "id": "slide_subheading",
+        "label": {
+          "cs": "Podnadpis",
+          "da": "Underoverskrift",
+          "de": "Untertitel",
+          "en": "Subheading",
+          "es": "Subtítulo",
+          "fi": "Alaotsikko",
+          "fr": "Sous-titre",
+          "it": "Sottotitolo",
+          "ja": "小見出し",
+          "ko": "소제목",
+          "nb": "Underoverskrift",
+          "nl": "Subkop",
+          "pl": "Nagłówek podrzędny",
+          "pt-BR": "Subtítulo",
+          "pt-PT": "Subtítulo",
+          "sv": "Underrubrik",
+          "th": "หัวเรื่องย่อย",
+          "tr": "Alt başlık",
+          "vi": "Tiêu đề phụ",
+          "zh-CN": "副标题",
+          "zh-TW": "子標題"
+        },
+        "default": {
+          "cs": "Úvod",
+          "da": "Introduktion",
+          "de": "Für den Einstieg:",
+          "en": "An introductory",
+          "es": "Frase introductoria",
+          "fi": "Aloittaminen",
+          "fr": "Introduction",
+          "it": "Come introduzione",
+          "ja": "紹介",
+          "ko": "소개",
+          "nb": "En introduksjon",
+          "nl": "Een inleiding",
+          "pl": "Wprowadzenie",
+          "pt-BR": "Uma introdução",
+          "pt-PT": "Uma introdução",
+          "sv": "En introduktion",
+          "th": "การเกริ่นนำ",
+          "tr": "Giriş",
+          "vi": "Một Biểu ngữ chủ đạo",
+          "zh-CN": "介绍性的",
+          "zh-TW": "首次優惠"
+        }
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": {
+          "cs": "Text tlačítka",
+          "da": "Knaptekst",
+          "de": "Schaltflächenbezeichnung",
+          "en": "Button label",
+          "es": "Etiqueta de botón",
+          "fi": "Tekstipainike",
+          "fr": "Texte du bouton",
+          "it": "Etichetta pulsante",
+          "ja": "ボタンのラベル",
+          "ko": "버튼 레이블",
+          "nb": "Knappetikett",
+          "nl": "Knoplabel",
+          "pl": "Przycisk z etykietą",
+          "pt-BR": "Etiqueta de botão",
+          "pt-PT": "Etiqueta do botão",
+          "sv": "Knappetikett",
+          "th": "ป้ายกำกับปุ่ม",
+          "tr": "Düğme etiketi",
+          "vi": "Nhãn nút",
+          "zh-CN": "按钮标签",
+          "zh-TW": "按鈕標籤"
+        },
+        "default": {
+          "cs": "Koupit nyní",
+          "da": "Shop nu",
+          "de": "Jetzt shoppen",
+          "en": "Shop now",
+          "es": "Compra ya",
+          "fi": "Tee nyt ostoksia",
+          "fr": "Acheter maintenant",
+          "it": "Acquista ora",
+          "ja": "今すぐ購入",
+          "ko": "지금 쇼핑하기",
+          "nb": "Handle nå",
+          "nl": "Koop nu",
+          "pl": "Kup teraz",
+          "pt-BR": "Compre agora",
+          "pt-PT": "Comprar agora",
+          "sv": "Handla nu",
+          "th": "ช้อปเลย",
+          "tr": "Şimdi satın al",
+          "vi": "Mua sắm ngay",
+          "zh-CN": "立即购买",
+          "zh-TW": "立即購物"
+        }
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": {
+          "cs": "Tlačítkový odkaz",
+          "da": "Knaplink",
+          "de": "Schaltflächenlink",
+          "en": "Button link",
+          "es": "Enlace de botón",
+          "fi": "Painikelinkki",
+          "fr": "Lien du bouton",
+          "it": "Link pulsante",
+          "ja": "ボタンのリンク",
+          "ko": "버튼 링크",
+          "nb": "Kobling for knapp",
+          "nl": "Knoplink",
+          "pl": "Link przycisku",
+          "pt-BR": "Link de botão",
+          "pt-PT": "Ligação do botão",
+          "sv": "Knapplänk",
+          "th": "ลิงก์ปุ่ม",
+          "tr": "Düğme bağlantısı",
+          "vi": "Liên kết trên nút",
+          "zh-CN": "按钮链接",
+          "zh-TW": "按鈕連結"
+        }
+      },
+      {
+        "type": "color",
+        "id": "slide_text_color",
+        "label": {
+          "cs": "Text a ikony",
+          "da": "Tekst og ikoner",
+          "de": "Text und Symbole",
+          "en": "Text and icons",
+          "es": "Texto e iconos",
+          "fi": "Teksti ja kuvakkeet",
+          "fr": "Texte et icônes",
+          "it": "Testo e icone",
+          "ja": "テキストとアイコン",
+          "ko": "텍스트 및 아이콘",
+          "nb": "Tekst og ikoner",
+          "nl": "Tekst en pictogrammen",
+          "pl": "Tekst i ikony",
+          "pt-BR": "Texto e ícones",
+          "pt-PT": "Texto e ícones",
+          "sv": "Text och ikoner",
+          "th": "ข้อความและไอคอน",
+          "tr": "Metin ve simgeler",
+          "vi": "Văn bản và biểu tượng",
+          "zh-CN": "文本和图标",
+          "zh-TW": "文字和圖示"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "slide_button_label_color",
+        "label": {
+          "cs": "Text tlačítka",
+          "da": "Knaptekst",
+          "de": "Schaltflächenbezeichnung",
+          "en": "Button label",
+          "es": "Etiqueta de botón",
+          "fi": "Tekstipainike",
+          "fr": "Texte du bouton",
+          "it": "Etichetta pulsante",
+          "ja": "ボタンのラベル",
+          "ko": "버튼 레이블",
+          "nb": "Knappetikett",
+          "nl": "Knoplabel",
+          "pl": "Przycisk z etykietą",
+          "pt-BR": "Etiqueta de botão",
+          "pt-PT": "Etiqueta do botão",
+          "sv": "Knappetikett",
+          "th": "ป้ายกำกับปุ่ม",
+          "tr": "Düğme etiketi",
+          "vi": "Nhãn nút",
+          "zh-CN": "按钮标签",
+          "zh-TW": "按鈕標籤"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "slide_button_background_color",
+        "label": {
+          "cs": "Tlačítko",
+          "da": "Knap",
+          "de": "Schaltfläche",
+          "en": "Button",
+          "es": "Botón",
+          "fi": "Painike",
+          "fr": "Bouton",
+          "it": "Pulsante",
+          "ja": "ボタン",
+          "ko": "버튼",
+          "nb": "Knapp",
+          "nl": "Knop",
+          "pl": "Przycisk",
+          "pt-BR": "Botão",
+          "pt-PT": "Botão",
+          "sv": "Knapp",
+          "th": "ปุ่ม",
+          "tr": "Düğme",
+          "vi": "Nút",
+          "zh-CN": "按钮",
+          "zh-TW": "按鈕"
+        },
+        "default": "#1f2021"
+      }
       ]
     }
   ]
