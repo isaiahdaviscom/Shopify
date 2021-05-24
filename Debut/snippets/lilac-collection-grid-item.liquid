@@ -1,0 +1,27 @@
+{% comment %}
+    Renders a list of products from a collection
+
+    Accepts:
+    - collection: {Object} Collection Liquid object (required)
+
+    Usage:
+    {% include 'collection-grid-item', collection: collection %}
+{% endcomment %}
+{% if collection.image %}
+  {%- assign collection_image = collection.image -%}
+{% elsif collection.products.first and collection.products.first.media != empty %}
+  {%- assign collection_image = collection.products.first.featured_media.preview_image -%}
+{% else %}
+  {% assign collection_image = blank %}
+{% endif %}
+
+<a href="{% if collection.products == empty %}#{% else %}{{ collection.url }}{% endif %}">
+  <div class="flex text-white" style="position: relative;">
+    <!--  -->
+    <img class="collection-image" src="{{ collection_image | img_url : '1024x1024' }}" height="265" width="530" alt="{{ collection_image.alt | escape }}">
+    <div class="collection-overlay"></div>
+    <div class="collection-text">
+      <h3 class="h4">{{ collection.title }}</h3>
+    </div>
+  </div>
+</a>
