@@ -43,12 +43,9 @@
   <div class="action-bar-wrapper {% if request.page_type == 'index' %} action-bar--hero{% endif %} {% if section.settings.action_bar_link_list == blank %} hide {% endif %}" data-section-id="{{ section.id }}" data-section-type="action-bar-section">
 
 
-    <nav class="action-bar action-bar--has-menu" role="presentation">
-      <ul class="action-bar__menu--main action-bar__menu list--inline {% if action_bar_main_active %} action-bar--show{% endif %}" id="SiteNav" role="navigation">
-        {% comment %}
-          Assign which child linklist is associated with the action bar
-          link
-        {% endcomment %}
+    <nav class="action-bar action-bar--has-menu">
+      <ul class="action-bar__menu--main action-bar__menu list--inline {% if action_bar_main_active %} action-bar--show{% endif %}" id="SiteNav">
+        {% comment %}Assign which child linklist is associated with the action bar link{% endcomment %}
         {% for link in linklists[section.settings.action_bar_link_list].links %}
           {% assign child_list_handle = link.title | handleize %}
           {% if link.links != blank %}
